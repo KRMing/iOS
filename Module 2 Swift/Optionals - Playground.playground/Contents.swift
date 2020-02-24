@@ -30,7 +30,7 @@ var sc:Spaceship? = nil
 sc?.cruise()
 
 // Implicitly Unwrapped Optionals
-var s3:Spaceship! = nil
+var s3:Spaceship! = Spaceship()
 s3.cruise()
 
 
