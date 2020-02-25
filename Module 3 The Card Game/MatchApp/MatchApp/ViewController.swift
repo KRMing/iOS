@@ -18,10 +18,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     var cardsArray = [Card]()
     
     var timer: Timer?
-    var milliseconds:Int = 50 * 1000
+    var milliseconds:Int = 10 * 1000
     
     var firstFlippedCardIndex: IndexPath?
 
+    var soundPlayer = SoundManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -36,6 +38,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
         // fixes the problem of timer pausing when scrolling through the screen
         RunLoop.main.add(timer!, forMode: .common)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // play shuffling sound
+        soundPlayer.playSound(effect: .shuffle)
     }
     
     // MARK: - Timer Methods
@@ -88,10 +95,18 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     // detects if user touched the card
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if milliseconds <= 0 {
+            return
+        }
+        
         let cell = collectionView.cellForItem(at: indexPath) as? CardCollectionViewCell
         
         if cell?.card?.isFlipped == false && cell?.card?.isMatched == false {
+            
             cell?.flipUp()
+            
+            soundPlayer.playSound(effect: .flip)
             
             // if it is the first selected card, assign the index
             if firstFlippedCardIndex == nil {
@@ -121,6 +136,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             cardOneCell?.remove()
             cardTwoCell?.remove()
             
+            soundPlayer.playSound(effect: .match)
+            
             // is it the last pair?
             checkForGameEnd()
         }
@@ -130,6 +147,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             
             cardOne.isFlipped = false
             cardTwo.isFlipped = false
+            
+            soundPlayer.playSound(effect: .nomatch)
         }
         
         firstFlippedCardIndex = nil
