@@ -19,7 +19,7 @@ class Card {
         self.isMatched = false
     }
     
-    init(imageName: String, isMatched: Bool, isFlipped: Bool) {
+    init(imageName: String, isMatched: Bool = false, isFlipped: Bool = false) {
         self.imageName = imageName
         self.isMatched = isMatched
         self.isFlipped = isFlipped
