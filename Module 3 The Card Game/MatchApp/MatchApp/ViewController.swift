@@ -18,7 +18,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     var cardsArray = [Card]()
     
     var timer: Timer?
-    var milliseconds:Int = 10 * 1000
+    var milliseconds:Int = 30 * 1000
     
     var firstFlippedCardIndex: IndexPath?
 
