@@ -15,6 +15,7 @@
 		3A97B8B0240656F400FE44CF /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A97B8AF240656F400FE44CF /* Question.swift */; };
 		3A97B8B22406574C00FE44CF /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A97B8B12406574C00FE44CF /* QuizModel.swift */; };
 		3A97B8B424065DBB00FE44CF /* QuestionData.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A97B8B324065DBB00FE44CF /* QuestionData.json */; };
+		3A97B8DA2406B23900FE44CF /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A97B8D92406B23900FE44CF /* ResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		3A97B8AF240656F400FE44CF /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		3A97B8B12406574C00FE44CF /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
 		3A97B8B324065DBB00FE44CF /* QuestionData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = QuestionData.json; sourceTree = SOURCE_ROOT; };
+		3A97B8D92406B23900FE44CF /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				3A97B89D2406564100FE44CF /* AppDelegate.swift */,
 				3A97B89F2406564100FE44CF /* ViewController.swift */,
+				3A97B8D92406B23900FE44CF /* ResultViewController.swift */,
 				3A97B8AF240656F400FE44CF /* Question.swift */,
 				3A97B8B12406574C00FE44CF /* QuizModel.swift */,
 				3A97B8B324065DBB00FE44CF /* QuestionData.json */,
@@ -145,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A97B8DA2406B23900FE44CF /* ResultViewController.swift in Sources */,
 				3A97B8B22406574C00FE44CF /* QuizModel.swift in Sources */,
 				3A97B8B0240656F400FE44CF /* Question.swift in Sources */,
 				3A97B8A02406564100FE44CF /* ViewController.swift in Sources */,
