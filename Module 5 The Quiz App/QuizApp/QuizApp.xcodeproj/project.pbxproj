@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A91131A2407CD69001F8981 /* StateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9113192407CD69001F8981 /* StateManager.swift */; };
 		3A97B89E2406564100FE44CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A97B89D2406564100FE44CF /* AppDelegate.swift */; };
 		3A97B8A02406564100FE44CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A97B89F2406564100FE44CF /* ViewController.swift */; };
 		3A97B8A32406564100FE44CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A97B8A12406564100FE44CF /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A9113192407CD69001F8981 /* StateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateManager.swift; sourceTree = "<group>"; };
 		3A97B89A2406564100FE44CF /* QuizApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuizApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A97B89D2406564100FE44CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A97B89F2406564100FE44CF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				3A97B8D92406B23900FE44CF /* ResultViewController.swift */,
 				3A97B8AF240656F400FE44CF /* Question.swift */,
 				3A97B8B12406574C00FE44CF /* QuizModel.swift */,
+				3A9113192407CD69001F8981 /* StateManager.swift */,
 				3A97B8B324065DBB00FE44CF /* QuestionData.json */,
 				3A97B8A12406564100FE44CF /* Main.storyboard */,
 				3A97B8A42406564300FE44CF /* Assets.xcassets */,
@@ -151,6 +154,7 @@
 				3A97B8DA2406B23900FE44CF /* ResultViewController.swift in Sources */,
 				3A97B8B22406574C00FE44CF /* QuizModel.swift in Sources */,
 				3A97B8B0240656F400FE44CF /* Question.swift in Sources */,
+				3A91131A2407CD69001F8981 /* StateManager.swift in Sources */,
 				3A97B8A02406564100FE44CF /* ViewController.swift in Sources */,
 				3A97B89E2406564100FE44CF /* AppDelegate.swift in Sources */,
 			);

@@ -65,6 +65,18 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITab
         // get a reference to the questions
         self.questions = questions
         
+        // check if we should restore the state, before showing question #1
+        let savedIndex = StateManager.retrieveValue(key: StateManager.questionIndexKey) as? Int
+        
+        if savedIndex != nil && savedIndex! < self.questions.count {
+            
+            // set the current question to the saved index
+            currentQuestionIndex = savedIndex!
+            
+            // retrieve the number correct from storage
+            numCorrect = StateManager.retrieveValue(key: StateManager.numCorrectKey) as! Int
+        }
+        
         // display the first question
         displayQuestion()
         
@@ -161,12 +173,18 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITab
                 resultDialog!.buttonText = "Restart"
                 
                 present(resultDialog!, animated: true, completion: nil)
+                
+                // clear state
+                StateManager.clearState()
             }
         }
         else if currentQuestionIndex < questions.count {
             
             // display the next question
             displayQuestion()
+            
+            // save state
+            StateManager.saveState(numCorrect: numCorrect, questionIndex: currentQuestionIndex)
         }
         else if currentQuestionIndex > questions.count {
             
@@ -174,7 +192,5 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITab
             currentQuestionIndex = 0
             displayQuestion()
         }
-        
-        
     }
 }

@@ -54,6 +54,4 @@ class ResultViewController: UIViewController {
         // notify delegate the popup was dismissed
         delegate?.dialogDismissed()
     }
-    
-
 }
