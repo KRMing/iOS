@@ -74,7 +74,11 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITab
             currentQuestionIndex = savedIndex!
             
             // retrieve the number correct from storage
-            numCorrect = StateManager.retrieveValue(key: StateManager.numCorrectKey) as! Int
+            let errorChecker = StateManager.retrieveValue(key: StateManager.numCorrectKey) as? Int
+            
+            if errorChecker != nil {
+                numCorrect = errorChecker!
+            }
         }
         
         // display the first question
@@ -150,7 +154,11 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITab
             resultDialog!.feedbackText = question.feedback!
             resultDialog!.buttonText = "Next"
             
-            present(resultDialog!, animated: true, completion: nil)
+            // update the UI in the main thread
+            DispatchQueue.main.async {
+                
+                self.present(self.resultDialog!, animated: true, completion: nil)
+            }
         }
     }
     
