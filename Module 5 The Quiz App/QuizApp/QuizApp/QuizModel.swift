@@ -53,10 +53,6 @@ class QuizModel {
             
             print("error! either decoder was nil or something happened trying to decode data")
         }
-        
-        
-        
-        
     }
     
     func getRemoteJsonFile() {
