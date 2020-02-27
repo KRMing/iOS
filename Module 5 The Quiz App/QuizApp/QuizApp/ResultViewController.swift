@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ResultViewControllerProtocol {
+    func dialogDismissed()
+}
+
 class ResultViewController: UIViewController {
 
     @IBOutlet weak var dimView: UIView!
@@ -24,22 +28,31 @@ class ResultViewController: UIViewController {
     var feedbackText = ""
     var buttonText = ""
     
+    var delegate: ResultViewControllerProtocol?
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
-
+        
+        // round the dialog box corners
+        dialogView.layer.cornerRadius = 10
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
         // now that the elements have loaded, set the text
         titleLabel.text = titleText
         feedbackLabel.text = feedbackText
         dismissButton.setTitle(buttonText, for: .normal)
-        
     }
-    
 
     @IBAction func dismissTapped(_ sender: Any) {
         
         // TODO: dismiss the popup
+        self.dismiss(animated: true, completion: nil)
         
+        // notify delegate the popup was dismissed
+        delegate?.dialogDismissed()
     }
     
 

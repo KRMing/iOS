@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITableViewDataSource, ResultViewControllerProtocol {
     
     @IBOutlet weak var questionLabel: UILabel!
     
@@ -28,6 +28,7 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITab
         // initialize the result dialog
         resultDialog = storyboard?.instantiateViewController(withIdentifier: "ResultVC") as? ResultViewController
         resultDialog?.modalPresentationStyle = .overCurrentContext
+        resultDialog?.delegate = self
         
         // set self as the delegate and datasource for the tableview
         tableView.delegate = self
@@ -41,7 +42,7 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITab
         model.delegate = self
         model.getQuestions()
     }
-
+    
     func displayQuestion() {
         
         // check if there are questions and check that the currentQuestionIndex is not out of bounds
@@ -139,11 +140,41 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITab
             
             present(resultDialog!, animated: true, completion: nil)
         }
+    }
+    
+    // MARK: - ResultViewControllerProtocol Methods
+    
+    func dialogDismissed() {
         
         // increment the currentQuestionIndex
         currentQuestionIndex += 1
         
-        // display the next question
-        displayQuestion()
+        if currentQuestionIndex == questions.count {
+            
+            // the user has just answered the last question
+            // show a summary dialog
+            if resultDialog != nil {
+                
+                // customize the dialog text
+                resultDialog!.titleText = "Summary"
+                resultDialog!.feedbackText = "You got \(numCorrect) correct out of \(questions.count) questions."
+                resultDialog!.buttonText = "Restart"
+                
+                present(resultDialog!, animated: true, completion: nil)
+            }
+        }
+        else if currentQuestionIndex < questions.count {
+            
+            // display the next question
+            displayQuestion()
+        }
+        else if currentQuestionIndex > questions.count {
+            
+            numCorrect = 0
+            currentQuestionIndex = 0
+            displayQuestion()
+        }
+        
+        
     }
 }
