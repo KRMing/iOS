@@ -24,7 +24,7 @@ class CardCollectionViewCell: UICollectionViewCell {
         self.backCardImage.image = UIImage(named: "back")
         
         if self.card!.isMatched {
-            
+             
             self.frontCardImage.alpha = 0
             self.backCardImage.alpha = 0
             

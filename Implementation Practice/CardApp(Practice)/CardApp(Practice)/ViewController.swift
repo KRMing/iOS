@@ -17,10 +17,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var cardsArray: [Card]?
     var cardsLeft: Int?
     var firstTouchCell: CardCollectionViewCell?
+    var timer: Timer?
     
-    var timeLeft = 100 * 1000
+    var timeLeft: Double = 30 * 1000
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         cardsArray = Card.generateCards()
@@ -28,6 +30,26 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
+        RunLoop.main.add(timer!, forMode: .common)
+    }
+    
+    // MARK: - Timer Method
+    
+    @objc func timerFired() {
+        
+        timeLeft -= 1
+        
+        timerLabel.text = String(format: "Time Remaining: %.2f", timeLeft / 1000.0)
+        
+        if timeLeft == 0 {
+            
+            timerLabel.textColor = UIColor.red
+            timer?.invalidate()
+            
+            checkGameEnd()
+        }
     }
     
     // MARK: - UICollectionViewDelegateFlowLayout
@@ -74,7 +96,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         let cell = collectionView.cellForItem(at: indexPath) as? CardCollectionViewCell
         
-        if cell?.card?.isFlipped == false && cell?.card?.isMatched == false {
+        if cell?.card?.isFlipped == false && cell?.card?.isMatched == false && timeLeft > 0 {
             
             cell?.flipUp()
             
@@ -115,9 +137,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func checkGameEnd() {
         
-        if self.cardsLeft! <= 0 {
-            
+        if self.cardsLeft! <= 0 && self.timeLeft > 0 {
+                
+            timer?.invalidate()
             showAlert(title: "Congratulations!", message: "You've finished the game.")
+        }
+        else if self.cardsLeft! > 0 && self.timeLeft <= 0 {
+            
+            showAlert(title: "Times up!", message: "Better luck next time.")
         }
     }
     
