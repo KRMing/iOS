@@ -16,26 +16,41 @@ class CardCollectionViewCell: UICollectionViewCell {
     
     var card: Card?
     
-    func loadCard(card: Card) {
+    func reloadCell(card: Card) {
         
         self.card = card
         
-        frontCardImage.image = UIImage(named: "\(card.imageName)")
-        backCardImage.image = UIImage(named: "back")
+        self.frontCardImage.image = UIImage(named: "\(card.imageName)")
+        self.backCardImage.image = UIImage(named: "back")
         
-        if card.isFlipped {
+        if self.card!.isMatched {
             
+            self.frontCardImage.alpha = 0
+            self.backCardImage.alpha = 0
+            
+            return
         }
         else {
             
+            self.frontCardImage.alpha = 1
+            self.backCardImage.alpha = 1
+        }
+        
+        if self.card!.isFlipped {
+            
+            flipUp(speed: 0)
+        }
+        else {
+            
+            flipDown(speed: 0, delay: 0)
         }
     }
     
     func flipUp(speed: TimeInterval = 0.3) {
         
-        UIView.transition(from: backCardImage, to: frontCardImage, duration: speed, options: [.showHideTransitionViews, .transitionFlipFromLeft], completion: nil)
+        UIView.transition(from: self.backCardImage, to: self.frontCardImage, duration: speed, options: [.showHideTransitionViews, .transitionFlipFromLeft], completion: nil)
         
-        card?.isFlipped = true
+        self.card?.isFlipped = true
     }
     
     func flipDown(speed: TimeInterval = 0.3, delay: TimeInterval = 0.3) {
@@ -45,10 +60,18 @@ class CardCollectionViewCell: UICollectionViewCell {
             UIView.transition(from: self.frontCardImage, to: self.backCardImage, duration: speed, options: [.showHideTransitionViews, .transitionFlipFromRight], completion: nil)
         }
         
-        card?.isFlipped = false
+        self.card?.isFlipped = false
     }
     
     func remove() {
         
+        self.backCardImage.alpha = 0
+        
+        UIView.animate(withDuration: 0.3, delay: 0.5, options: .curveEaseOut, animations: {
+            
+            self.frontCardImage.alpha = 0
+        }, completion: nil)
+        
+        self.card?.isMatched = true
     }
 }

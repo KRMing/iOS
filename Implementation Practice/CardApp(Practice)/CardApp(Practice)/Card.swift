@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Card {
+class Card {
     
     var imageName = ""
     var isFlipped = false
@@ -19,5 +19,29 @@ struct Card {
         self.imageName = imageName
         self.isFlipped = isFlipped
         self.isMatched = isMatched
+    }
+    
+    static func generateCards() -> [Card] {
+        
+        var cardsArray = [Card]()
+        var randNumsArray = [Int]()
+        
+        for _ in 1...8 {
+            
+            var randNum = Int.random(in: 1...13)
+            while randNumsArray.contains(randNum) {
+                randNum = Int.random(in: 1...13)
+            }
+            
+            cardsArray.append(Card(imageName: "card\(randNum)"))
+            cardsArray.append(Card(imageName: "card\(randNum)"))
+            randNumsArray.append(randNum)
+            
+            print(randNum)
+        }
+        
+        cardsArray.shuffle()
+        
+        return cardsArray
     }
 }

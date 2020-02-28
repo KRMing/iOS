@@ -18,7 +18,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     var cardsArray = [Card]()
     
     var timer: Timer?
-    var milliseconds:Int = 30 * 1000
+    var milliseconds: Int = 30 * 1000
     
     var firstFlippedCardIndex: IndexPath?
 
@@ -49,6 +49,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     // timer function per tick
     @objc func timerFired() {
+        
         milliseconds -= 1
         
         // update and display seconds per tick on the label

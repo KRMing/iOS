@@ -16,13 +16,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     var cardsArray: [Card]?
     var cardsLeft: Int?
+    var firstTouchCell: CardCollectionViewCell?
     
     var timeLeft = 100 * 1000
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        cardsArray = GameModel.generateCards()
+        cardsArray = Card.generateCards()
         cardsLeft = cardsArray?.count
         
         collectionView.delegate = self
@@ -42,14 +43,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         var returnValue: Int
         
-        if cardsArray == nil {
+        if self.cardsArray == nil {
             
             print("cardsArray wasn't properly assigned")
             returnValue = 0
         }
         else {
             
-            returnValue = cardsArray!.count
+            returnValue = self.cardsArray!.count
         }
         
         return returnValue
@@ -62,10 +63,73 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        let cell = cell as? CardCollectionViewCell
+        
+        cell?.reloadCell(card: cardsArray![indexPath.row])
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        // when user touches the card
+        let cell = collectionView.cellForItem(at: indexPath) as? CardCollectionViewCell
         
+        if cell?.card?.isFlipped == false && cell?.card?.isMatched == false {
+            
+            cell?.flipUp()
+            
+            if firstTouchCell == nil {
+                
+                firstTouchCell = cell
+            }
+            else {
+                
+                checkMatch(secondTouchIndex: indexPath)
+            }
+        }
+    }
+    
+    // MARK: - Game Logic
+    
+    func checkMatch(secondTouchIndex: IndexPath) {
+        
+        let secondCell = self.collectionView.cellForItem(at: secondTouchIndex) as? CardCollectionViewCell
+        
+        if self.firstTouchCell?.card?.imageName == secondCell?.card?.imageName {
+            
+            self.firstTouchCell?.remove()
+            secondCell?.remove()
+            
+            self.cardsLeft! -= 2
+            
+            checkGameEnd()
+        }
+        else {
+            
+            self.firstTouchCell?.flipDown()
+            secondCell?.flipDown()
+        }
+        
+        self.firstTouchCell = nil
+    }
+    
+    func checkGameEnd() {
+        
+        if self.cardsLeft! <= 0 {
+            
+            showAlert(title: "Congratulations!", message: "You've finished the game.")
+        }
+    }
+    
+    func showAlert(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let dismissAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        
+        alert.addAction(dismissAction)
+        
+        present(alert, animated: true, completion: nil)
     }
 }
 
