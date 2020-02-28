@@ -18,6 +18,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var cardsLeft: Int?
     var firstTouchCell: CardCollectionViewCell?
     var timer: Timer?
+    var sound: SoundManager?
     
     var timeLeft: Double = 30 * 1000
     
@@ -33,6 +34,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
         RunLoop.main.add(timer!, forMode: .common)
+        
+        sound = SoundManager()
+        sound?.playSound(effect: .shuffle)
     }
     
     // MARK: - Timer Method
@@ -65,14 +69,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         var returnValue: Int
         
-        if self.cardsArray == nil {
+        if cardsArray == nil {
             
             print("cardsArray wasn't properly assigned")
             returnValue = 0
         }
         else {
             
-            returnValue = self.cardsArray!.count
+            returnValue = cardsArray!.count
         }
         
         return returnValue
@@ -103,6 +107,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             if firstTouchCell == nil {
                 
                 firstTouchCell = cell
+                
+                sound?.playSound(effect: .flip)
             }
             else {
                 
@@ -115,34 +121,38 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func checkMatch(secondTouchIndex: IndexPath) {
         
-        let secondCell = self.collectionView.cellForItem(at: secondTouchIndex) as? CardCollectionViewCell
+        let secondCell = collectionView.cellForItem(at: secondTouchIndex) as? CardCollectionViewCell
         
-        if self.firstTouchCell?.card?.imageName == secondCell?.card?.imageName {
+        if firstTouchCell?.card?.imageName == secondCell?.card?.imageName {
             
-            self.firstTouchCell?.remove()
+            firstTouchCell?.remove()
             secondCell?.remove()
             
-            self.cardsLeft! -= 2
+            cardsLeft! -= 2
             
             checkGameEnd()
+            
+            sound?.playSound(effect: .match)
         }
         else {
             
-            self.firstTouchCell?.flipDown()
+            firstTouchCell?.flipDown()
             secondCell?.flipDown()
+            
+            sound?.playSound(effect: .nomatch)
         }
         
-        self.firstTouchCell = nil
+        firstTouchCell = nil
     }
     
     func checkGameEnd() {
         
-        if self.cardsLeft! <= 0 && self.timeLeft > 0 {
+        if cardsLeft! <= 0 && timeLeft > 0 {
                 
             timer?.invalidate()
             showAlert(title: "Congratulations!", message: "You've finished the game.")
         }
-        else if self.cardsLeft! > 0 && self.timeLeft <= 0 {
+        else if cardsLeft! > 0 && timeLeft <= 0 {
             
             showAlert(title: "Times up!", message: "Better luck next time.")
         }
