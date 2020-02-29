@@ -11,15 +11,52 @@ import AVFoundation
 
 class SoundManager {
     
-    var soundPlayer: AVPlayer?
+    var soundPlayer: AVAudioPlayer?
     
-    enum fileName {
+    enum soundEffect {
         
         case flip
-        case match
-        case nomatch
+        case right
+        case wrong
         case shuffle
     }
     
+    func playSound(type: soundEffect) {
+        
+        var fileName: String?
+        
+        switch type {
+            
+        case .flip:
+            fileName = "cardflip"
+        case .right:
+            fileName = "dingcorrect"
+        case .wrong:
+            fileName = "dingwrong"
+        case .shuffle:
+            fileName = "shuffle"
+        }
+        
     
+        let path = Bundle.main.path(forResource: fileName, ofType: ".wav")
+        
+        guard path != nil else {
+            
+            print("could not retrieve audio file path")
+            return
+        }
+        
+        let url = URL(fileURLWithPath: path!)
+        
+        do {
+            
+            soundPlayer = try AVAudioPlayer(contentsOf: url)
+            soundPlayer?.play()
+        }
+        catch {
+            
+            print("couldn't assign AVAudioPlayer instance")
+            return
+        }
+    }
 }

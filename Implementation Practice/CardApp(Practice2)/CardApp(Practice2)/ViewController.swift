@@ -22,6 +22,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var timeLeft: TimeInterval = 50 * 1000
     var timer: Timer?
     
+    let soundPlayer = SoundManager()
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -34,6 +36,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
         timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
         RunLoop.main.add(timer!, forMode: .common)
+        
+        soundPlayer.playSound(type: .shuffle)
     }
     
     // MARK: Timer Functions
@@ -42,7 +46,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         timeLeft -= 1
         
-        timerLabel.text = String(format: "Time Left: %.3f", Double(timeLeft) / 1000.0)
+        timerLabel.text = String(format: "Time Left: %.2f", Double(timeLeft) / 1000.0)
         
         if timeLeft == 0 {
             
@@ -88,6 +92,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             if firstSelectIndex == nil {
                 
                 firstSelectIndex = indexPath
+                
+                soundPlayer.playSound(type: .flip)
             }
             else {
                 
@@ -116,6 +122,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
             cardsLeft -= 2
 
+            soundPlayer.playSound(type: .right)
+            
             checkGameEnd()
         }
         else {
@@ -125,6 +133,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
             firstCard.isFlipped = false // same here as well
             secondCard.isFlipped = false
+            
+            soundPlayer.playSound(type: .wrong)
         }
 
         firstSelectIndex = nil
