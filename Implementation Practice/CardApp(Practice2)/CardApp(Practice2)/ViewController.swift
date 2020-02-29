@@ -109,7 +109,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 //        }
     }
     
-    // MARK: Supplimentary Functions
+    // MARK: Supplementary Functions
     
     func showAlert(title: String, message: String) {
         
