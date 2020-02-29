@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16092.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16092.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KEW-ug-MMo">
     <device id="retina6_1" orientation="landscape" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16082.1"/>
@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Game ScreenVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CardApp_Practice2_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameScreenVC" id="BYZ-38-t0r" customClass="GameScreenVC" customModule="CardApp_Practice2_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -110,10 +110,77 @@
             </objects>
             <point key="canvasLocation" x="-10" y="62"/>
         </scene>
+        <!--Start ScreenVC-->
+        <scene sceneID="u4Q-ph-nss">
+            <objects>
+                <viewController id="KEW-ug-MMo" customClass="StartScreenVC" customModule="CardApp_Practice2_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d19-fy-U7U">
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Lib-cD-u6L">
+                                <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="3qq-k5-0pO" userLabel="Vertical Stack View">
+                                <rect key="frame" x="144" y="40" width="608" height="313"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nvf-hs-dqb" userLabel="Horizontal Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="608" height="224"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card12" translatesAutoresizingMaskIntoConstraints="NO" id="dyS-dW-CJ4">
+                                                <rect key="frame" x="0.0" y="0.0" width="144.5" height="224"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card7" translatesAutoresizingMaskIntoConstraints="NO" id="Aee-0H-25O">
+                                                <rect key="frame" x="154.5" y="0.0" width="144.5" height="224"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card3" translatesAutoresizingMaskIntoConstraints="NO" id="klX-lw-cxd">
+                                                <rect key="frame" x="309" y="0.0" width="144.5" height="224"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card6" translatesAutoresizingMaskIntoConstraints="NO" id="s5c-SL-JPh">
+                                                <rect key="frame" x="463.5" y="0.0" width="144.5" height="224"/>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uFd-Z6-ogG">
+                                        <rect key="frame" x="0.0" y="229" width="608" height="84"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="30"/>
+                                        <state key="normal" title="Start!"/>
+                                        <connections>
+                                            <action selector="startButtonTapped:" destination="KEW-ug-MMo" eventType="touchUpInside" id="hOg-Rr-ojD"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="gJE-9r-ZSW" firstAttribute="bottom" secondItem="3qq-k5-0pO" secondAttribute="bottom" constant="40" id="0WI-5Y-FVq"/>
+                            <constraint firstAttribute="trailing" secondItem="Lib-cD-u6L" secondAttribute="trailing" id="Clo-4A-Xxb"/>
+                            <constraint firstItem="Lib-cD-u6L" firstAttribute="leading" secondItem="d19-fy-U7U" secondAttribute="leading" id="DRt-To-Ere"/>
+                            <constraint firstItem="gJE-9r-ZSW" firstAttribute="trailing" secondItem="3qq-k5-0pO" secondAttribute="trailing" constant="100" id="FPp-Ae-Qe6"/>
+                            <constraint firstItem="Lib-cD-u6L" firstAttribute="top" secondItem="d19-fy-U7U" secondAttribute="top" id="HVH-5O-TdH"/>
+                            <constraint firstItem="3qq-k5-0pO" firstAttribute="top" secondItem="gJE-9r-ZSW" secondAttribute="top" constant="40" id="Ijc-4H-4Bt"/>
+                            <constraint firstItem="3qq-k5-0pO" firstAttribute="leading" secondItem="gJE-9r-ZSW" secondAttribute="leading" constant="100" id="uNb-Kj-LAn"/>
+                            <constraint firstAttribute="bottom" secondItem="Lib-cD-u6L" secondAttribute="bottom" id="yKp-tb-hav"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gJE-9r-ZSW"/>
+                    </view>
+                    <connections>
+                        <outlet property="startButton" destination="uFd-Z6-ogG" id="qXQ-vx-Tcy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sAb-aX-Q84" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-10.044642857142856" y="-697.10144927536237"/>
+        </scene>
     </scenes>
     <resources>
         <image name="back" width="158" height="224"/>
         <image name="background" width="736" height="414"/>
         <image name="card12" width="158" height="224"/>
+        <image name="card3" width="158" height="224"/>
+        <image name="card6" width="158" height="224"/>
+        <image name="card7" width="158" height="224"/>
     </resources>
 </document>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16092.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="landscape" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16082.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Start Screen-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="StartScreen" customModule="CardApp_Practice3_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="8Ws-2h-CRa">
+                                <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Qpc-0G-uaN">
+                                <rect key="frame" x="393" y="107" width="200" height="140"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dya-8F-Cg8">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="110"/>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDI-mA-8nG">
+                                        <rect key="frame" x="0.0" y="110" width="200" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="8Ws-2h-CRa" secondAttribute="trailing" id="BQ6-pM-tG7"/>
+                            <constraint firstAttribute="bottom" secondItem="8Ws-2h-CRa" secondAttribute="bottom" id="CMO-UK-heY"/>
+                            <constraint firstItem="8Ws-2h-CRa" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ge2-Hl-6AB"/>
+                            <constraint firstItem="8Ws-2h-CRa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="nVg-S1-5U3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="143" y="-291"/>
+        </scene>
+        <!--Game Screen-->
+        <scene sceneID="i8x-IT-JYY">
+            <objects>
+                <viewController id="kOA-ed-QIb" customClass="GameScreen" customModule="CardApp_Practice3_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZvG-Em-qzC">
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="LXW-Na-g5J">
+                                <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="LXW-Na-g5J" firstAttribute="top" secondItem="ZvG-Em-qzC" secondAttribute="top" id="4PF-jb-8Kx"/>
+                            <constraint firstAttribute="trailing" secondItem="LXW-Na-g5J" secondAttribute="trailing" id="Dgu-b1-V55"/>
+                            <constraint firstAttribute="bottom" secondItem="LXW-Na-g5J" secondAttribute="bottom" id="GWU-SL-1Cj"/>
+                            <constraint firstItem="LXW-Na-g5J" firstAttribute="leading" secondItem="ZvG-Em-qzC" secondAttribute="leading" id="NcY-dG-dhF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KUo-PS-0bY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q8T-f5-IRP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="143" y="436"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="background" width="736" height="414"/>
+    </resources>
+</document>
