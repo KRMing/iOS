@@ -10,12 +10,17 @@ import UIKit
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    @IBOutlet weak var timerLabel: UILabel!
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     var cardsArray: [Card]?
     var cardsLeft: Int = 0
+
+    var firstSelectIndex: IndexPath?
     
-    var firstSelectedCell: CardCollectionViewCell?
+    var timeLeft: TimeInterval = 50 * 1000
+    var timer: Timer?
     
     override func viewDidLoad() {
         
@@ -26,8 +31,28 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         collectionView.delegate = self
         collectionView.dataSource = self
+
+        timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
+        RunLoop.main.add(timer!, forMode: .common)
+    }
+    
+    // MARK: Timer Functions
+    
+    @objc func fireTimer() {
         
-        collectionView.backgroundColor = UIColor.clear
+        timeLeft -= 1
+        
+        timerLabel.text = String(format: "Time Left: %.3f", Double(timeLeft) / 1000.0)
+        
+        if timeLeft == 0 {
+            
+            timer?.invalidate()
+            timer = nil
+            
+            timerLabel.textColor = UIColor.red
+            
+            checkGameEnd()
+        }
     }
     
     // MARK: - UICollectionView Methods
@@ -53,60 +78,70 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        print(cardsArray![indexPath.row].frontImageName)
+        let card = cardsArray![indexPath.row]
+        let cell = collectionView.cellForItem(at: indexPath) as! CardCollectionViewCell
         
-        let cardCell = collectionView.cellForItem(at: indexPath) as! CardCollectionViewCell
-        
-        if cardCell.card?.isFlipped == false && cardCell.card?.isMatched == false {
+        if !card.isFlipped && !card.isMatched && timeLeft > 0 {
             
-            cardCell.flipUp()
-            
-            if firstSelectedCell == nil {
+            cell.flipUp()
+
+            if firstSelectIndex == nil {
                 
-                firstSelectedCell = cardCell
+                firstSelectIndex = indexPath
             }
             else {
                 
-                checkMatch(secondSelectedCell: cardCell)
+                checkMatch(secondSelectIndex: indexPath)
             }
         }
     }
     
     // MARK: - Game Logic
     
-    func checkMatch(secondSelectedCell: CardCollectionViewCell) {
-
-        print(firstSelectedCell!.card!.frontImageName)
-        print(secondSelectedCell.card!.frontImageName)
+    func checkMatch(secondSelectIndex: IndexPath) {
         
-        if firstSelectedCell!.card!.frontImageName == secondSelectedCell.card!.frontImageName {
+        let firstCard = cardsArray![firstSelectIndex!.row]
+        let secondCard = cardsArray![secondSelectIndex.row]
+        
+        let firstCell = collectionView.cellForItem(at: firstSelectIndex!) as? CardCollectionViewCell
+        let secondCell = collectionView.cellForItem(at: secondSelectIndex) as! CardCollectionViewCell
+        
+        if firstCard.frontImageName == secondCard.frontImageName {
 
-            firstSelectedCell!.remove()
-            secondSelectedCell.remove()
-
+            firstCell?.remove()
+            secondCell.remove()
+            
+            firstCard.isMatched = true // there is a possibility that the firstCell might be nil (when out of visible scope)
+            secondCard.isMatched = true // so we add manipulate the array directly using the IndexPath
+            
             cardsLeft -= 2
 
             checkGameEnd()
         }
         else {
 
-            firstSelectedCell!.flipDown()
-            secondSelectedCell.flipDown()
+            firstCell?.flipDown()
+            secondCell.flipDown()
+            
+            firstCard.isFlipped = false // same here as well
+            secondCard.isFlipped = false
         }
 
-        firstSelectedCell = nil
+        firstSelectIndex = nil
     }
     
     func checkGameEnd() {
         
-        if cardsLeft <= 0 {
+        if cardsLeft <= 0 && timeLeft > 0 {
+            
+            timer?.invalidate()
             
             showAlert(title: "Congratulations!", message: "You've won the game!")
         }
-//        else {
-//
-//            showAlert(title: "Oops!", message: "Better luck next time!")
-//        }
+        else if cardsLeft > 0 && timeLeft <= 0 {
+
+            showAlert(title: "Oops, times Up!", message: "Better luck next time!")
+        }
     }
     
     // MARK: Supplementary Functions

@@ -100,6 +100,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         let cell = collectionView.cellForItem(at: indexPath) as? CardCollectionViewCell
         
+//        print("selected cell: \(cell)")
+//        print("selected cell card name: \(cell?.card?.imageName)")
+        
         if cell?.card?.isFlipped == false && cell?.card?.isMatched == false && timeLeft > 0 {
             
             cell?.flipUp()
@@ -122,6 +125,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func checkMatch(secondTouchIndex: IndexPath) {
         
         let secondCell = collectionView.cellForItem(at: secondTouchIndex) as? CardCollectionViewCell
+        
+//        print("checking match : ")
+//        print("first cell : \(firstTouchCell!), card name: \(firstTouchCell!.card?.imageName)")
+//        print("second cell : \(secondCell!), card name: \(secondCell!.card?.imageName)")
+//        print()
         
         if firstTouchCell?.card?.imageName == secondCell?.card?.imageName {
             

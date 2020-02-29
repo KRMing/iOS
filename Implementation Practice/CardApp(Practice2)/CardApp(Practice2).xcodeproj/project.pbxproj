@@ -19,6 +19,7 @@
 		3ADA2A94240A0C330068C5F9 /* dingwrong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3ADA2A90240A0C330068C5F9 /* dingwrong.wav */; };
 		3ADA2A99240A11210068C5F9 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2A98240A11210068C5F9 /* Card.swift */; };
 		3ADA2A9B240A183D0068C5F9 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2A9A240A183D0068C5F9 /* CardCollectionViewCell.swift */; };
+		3AF6065F240A6DCF00DC0D23 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF6065E240A6DCF00DC0D23 /* SoundManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		3ADA2A90240A0C330068C5F9 /* dingwrong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dingwrong.wav; path = "M3L12 Lesson Assets Sounds/dingwrong.wav"; sourceTree = SOURCE_ROOT; };
 		3ADA2A98240A11210068C5F9 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		3ADA2A9A240A183D0068C5F9 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		3AF6065E240A6DCF00DC0D23 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				3ADA2A98240A11210068C5F9 /* Card.swift */,
 				3ADA2A7B240A0BEF0068C5F9 /* ViewController.swift */,
 				3ADA2A9A240A183D0068C5F9 /* CardCollectionViewCell.swift */,
+				3AF6065E240A6DCF00DC0D23 /* SoundManager.swift */,
 				3ADA2A7D240A0BEF0068C5F9 /* Main.storyboard */,
 				3ADA2A80240A0BEF0068C5F9 /* Assets.xcassets */,
 				3ADA2A82240A0BEF0068C5F9 /* LaunchScreen.storyboard */,
@@ -173,6 +176,7 @@
 				3ADA2A7A240A0BEF0068C5F9 /* SceneDelegate.swift in Sources */,
 				3ADA2A9B240A183D0068C5F9 /* CardCollectionViewCell.swift in Sources */,
 				3ADA2A99240A11210068C5F9 /* Card.swift in Sources */,
+				3AF6065F240A6DCF00DC0D23 /* SoundManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
