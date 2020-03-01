@@ -173,8 +173,9 @@ class GameScreenVC: UIViewController, UICollectionViewDelegate, UICollectionView
             
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) {
                 
-                let startScreenVC = self.storyboard?.instantiateViewController(identifier: "StartScreenVC") as! StartScreenVC
-                self.present(startScreenVC, animated: true, completion: nil)
+//                let startScreenVC = self.storyboard?.instantiateViewController(identifier: "StartScreenVC") as! StartScreenVC
+//                self.present(startScreenVC, animated: true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
             }
         }
         
