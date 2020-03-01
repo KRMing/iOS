@@ -10,6 +10,10 @@ import Foundation
 
 class GameModel {
     
+    // TODO: either export as JSON file, or keep it in app, or keep in database
+    
+    var bestScores: [TimeInterval] = [0, 0, 0]
+    
     static func fetchCards() -> [Card] {
         
         var cardsArray = [Card]()
@@ -31,5 +35,14 @@ class GameModel {
         cardsArray.shuffle()
         
         return cardsArray
+    }
+    
+    // TODO: fix the updateScores function according to the save method chosen above
+    
+    func updateScores(newScore: TimeInterval) {
+        
+        bestScores.append(newScore)
+        bestScores.sort(by: >)
+        bestScores.remove(at: 3)
     }
 }

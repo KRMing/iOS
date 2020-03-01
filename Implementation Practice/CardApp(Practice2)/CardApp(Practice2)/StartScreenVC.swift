@@ -8,15 +8,8 @@
 
 import UIKit
 
-protocol StartScreenDelegate {
-    
-    func startGame()
-}
-
 class StartScreenVC: UIViewController {
-    
-    var startScreenDelegate: StartScreenDelegate!
-    
+        
     @IBOutlet weak var startButton: UIButton!
     
     override func viewDidLoad() {
@@ -31,8 +24,6 @@ class StartScreenVC: UIViewController {
     @IBAction func startButtonTapped(_ sender: Any) {
         
         let gameScreenVC = storyboard?.instantiateViewController(withIdentifier: "GameScreenVC") as! GameScreenVC
-        
-//        navigationController?.pushViewController(gameScreenVC, animated: true)
         present(gameScreenVC, animated: true, completion: nil)
     }
 }

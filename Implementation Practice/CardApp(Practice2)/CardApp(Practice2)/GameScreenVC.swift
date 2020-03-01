@@ -19,10 +19,13 @@ class GameScreenVC: UIViewController, UICollectionViewDelegate, UICollectionView
 
     var firstSelectIndex: IndexPath?
     
-    var timeLeft: TimeInterval = 10 * 1000
+    var score: TimeInterval?
+    
+    var timeLeft: TimeInterval = 50 * 1000
     var timer: Timer?
     
     let soundPlayer = SoundManager()
+    
     
     override func viewDidLoad() {
         
@@ -33,6 +36,8 @@ class GameScreenVC: UIViewController, UICollectionViewDelegate, UICollectionView
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        score = timeLeft
 
         timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
         RunLoop.main.add(timer!, forMode: .common)
@@ -146,6 +151,8 @@ class GameScreenVC: UIViewController, UICollectionViewDelegate, UICollectionView
             
             timer?.invalidate()
             
+            score! -= timeLeft
+            
             showAlert(title: "Congratulations!", message: "You've won the game!")
         }
         else if cardsLeft > 0 && timeLeft <= 0 {
@@ -162,7 +169,13 @@ class GameScreenVC: UIViewController, UICollectionViewDelegate, UICollectionView
         
         let dismissAction = UIAlertAction(title: "Ok", style: .default) { _ in
             
-            print("here")
+            let delay: TimeInterval = 0.5
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) {
+                
+                let startScreenVC = self.storyboard?.instantiateViewController(identifier: "StartScreenVC") as! StartScreenVC
+                self.present(startScreenVC, animated: true, completion: nil)
+            }
         }
         
         alert.addAction(dismissAction)

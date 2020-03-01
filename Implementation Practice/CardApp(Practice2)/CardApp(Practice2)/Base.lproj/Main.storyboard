@@ -108,12 +108,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-10" y="62"/>
+            <point key="canvasLocation" x="-10" y="-377"/>
         </scene>
         <!--Start ScreenVC-->
         <scene sceneID="u4Q-ph-nss">
             <objects>
-                <viewController id="KEW-ug-MMo" customClass="StartScreenVC" customModule="CardApp_Practice2_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartScreenVC" id="KEW-ug-MMo" customClass="StartScreenVC" customModule="CardApp_Practice2_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d19-fy-U7U">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -172,7 +172,42 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sAb-aX-Q84" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-10.044642857142856" y="-697.10144927536237"/>
+            <point key="canvasLocation" x="-10" y="-1106"/>
+        </scene>
+        <!--Score ResultVC-->
+        <scene sceneID="lLn-bi-GMR">
+            <objects>
+                <viewController id="XUv-KZ-txz" customClass="ScoreResultVC" customModule="CardApp_Practice2_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aiA-lF-fb4">
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="miA-LQ-kD6">
+                                <rect key="frame" x="0.0" y="0.0" width="896" height="393"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i6F-A4-uZ1">
+                                <rect key="frame" x="114" y="60" width="668" height="273"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="i6F-A4-uZ1" firstAttribute="centerX" secondItem="miA-LQ-kD6" secondAttribute="centerX" id="8eI-Tr-nKp"/>
+                            <constraint firstItem="miA-LQ-kD6" firstAttribute="leading" secondItem="aiA-lF-fb4" secondAttribute="leading" id="Bf7-2K-ysw"/>
+                            <constraint firstAttribute="trailing" secondItem="miA-LQ-kD6" secondAttribute="trailing" id="GnD-fG-6wv"/>
+                            <constraint firstItem="i6F-A4-uZ1" firstAttribute="leading" secondItem="NBi-10-ItY" secondAttribute="leading" constant="70" id="LhH-5g-TML"/>
+                            <constraint firstItem="NBi-10-ItY" firstAttribute="bottom" secondItem="i6F-A4-uZ1" secondAttribute="bottom" constant="60" id="RWA-F6-7vW"/>
+                            <constraint firstItem="i6F-A4-uZ1" firstAttribute="centerY" secondItem="miA-LQ-kD6" secondAttribute="centerY" id="W2d-aj-vfr"/>
+                            <constraint firstItem="i6F-A4-uZ1" firstAttribute="top" secondItem="NBi-10-ItY" secondAttribute="top" constant="60" id="a0m-f3-Uc2"/>
+                            <constraint firstItem="miA-LQ-kD6" firstAttribute="top" secondItem="aiA-lF-fb4" secondAttribute="top" id="mdB-DE-0V3"/>
+                            <constraint firstItem="NBi-10-ItY" firstAttribute="trailing" secondItem="i6F-A4-uZ1" secondAttribute="trailing" constant="70" id="rxL-PR-EQ6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NBi-10-ItY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WO2-E3-pyv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-11" y="-1865"/>
         </scene>
     </scenes>
     <resources>
