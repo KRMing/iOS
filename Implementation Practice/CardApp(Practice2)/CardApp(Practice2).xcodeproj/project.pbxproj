@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3AA3EAD0240BBF49008FDF17 /* ScoreResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA3EACF240BBF49008FDF17 /* ScoreResultVC.swift */; };
 		3ADA2A78240A0BEF0068C5F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2A77240A0BEF0068C5F9 /* AppDelegate.swift */; };
 		3ADA2A7A240A0BEF0068C5F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2A79240A0BEF0068C5F9 /* SceneDelegate.swift */; };
 		3ADA2A7C240A0BEF0068C5F9 /* GameScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2A7B240A0BEF0068C5F9 /* GameScreenVC.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3AA3EACF240BBF49008FDF17 /* ScoreResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreResultVC.swift; sourceTree = "<group>"; };
 		3ADA2A74240A0BEF0068C5F9 /* CardApp(Practice2).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CardApp(Practice2).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ADA2A77240A0BEF0068C5F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3ADA2A79240A0BEF0068C5F9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,8 +80,9 @@
 				3ADA2A77240A0BEF0068C5F9 /* AppDelegate.swift */,
 				3ADA2A79240A0BEF0068C5F9 /* SceneDelegate.swift */,
 				3ADA2A98240A11210068C5F9 /* Card.swift */,
-				3AF60691240AA1DB00DC0D23 /* GameModel.swift */,
 				3ADA2A9A240A183D0068C5F9 /* CardCollectionViewCell.swift */,
+				3AF60691240AA1DB00DC0D23 /* GameModel.swift */,
+				3AA3EACF240BBF49008FDF17 /* ScoreResultVC.swift */,
 				3ADA2A7B240A0BEF0068C5F9 /* GameScreenVC.swift */,
 				3AF60660240A96DE00DC0D23 /* StartScreenVC.swift */,
 				3AF6065E240A6DCF00DC0D23 /* SoundManager.swift */,
@@ -185,6 +188,7 @@
 				3AF60692240AA1DB00DC0D23 /* GameModel.swift in Sources */,
 				3ADA2A99240A11210068C5F9 /* Card.swift in Sources */,
 				3AF6065F240A6DCF00DC0D23 /* SoundManager.swift in Sources */,
+				3AA3EAD0240BBF49008FDF17 /* ScoreResultVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
