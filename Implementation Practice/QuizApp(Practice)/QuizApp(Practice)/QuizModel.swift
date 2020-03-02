@@ -10,14 +10,31 @@ import Foundation
 
 protocol QuizModelDelegate {
     
-    func fetchQuizElements(elementArray: [QuizFormat])
+    func assignDataToDelegate(elementArray: [QuizFormat])
 }
 
 class QuizModel {
     
-    var quizModelDelegate: QuizModelDelegate!
+    var delegate: QuizModelDelegate!
     
     let fileName = "QuestionData"
+    
+    enum sourceType {
+        
+        case local
+        case remote
+    }
+    
+    func loadData(type: sourceType) {
+        
+        switch type {
+            
+            case .local:
+            fetchLocalJsonData()
+            case .remote:
+            fetchRemoteJsonData()
+        }
+    }
     
     func fetchLocalJsonData() {
     
@@ -46,7 +63,7 @@ class QuizModel {
                 return
             }
             
-            quizModelDelegate.fetchQuizElements(elementArray: array!)
+            delegate.assignDataToDelegate(elementArray: array!)
         }
         catch {
             
