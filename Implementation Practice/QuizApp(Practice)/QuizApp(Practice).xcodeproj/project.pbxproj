@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A0360C0240D26BC00EE2922 /* FeedbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0360BF240D26BC00EE2922 /* FeedbackVC.swift */; };
 		3AA3EADE240BCFEE008FDF17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA3EADD240BCFEE008FDF17 /* AppDelegate.swift */; };
 		3AA3EAE0240BCFEE008FDF17 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA3EADF240BCFEE008FDF17 /* SceneDelegate.swift */; };
 		3AA3EAE2240BCFEE008FDF17 /* BaseScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA3EAE1240BCFEE008FDF17 /* BaseScreenVC.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A0360BF240D26BC00EE2922 /* FeedbackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackVC.swift; sourceTree = "<group>"; };
 		3AA3EADA240BCFEE008FDF17 /* QuizApp(Practice).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QuizApp(Practice).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AA3EADD240BCFEE008FDF17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AA3EADF240BCFEE008FDF17 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			children = (
 				3AA3EADD240BCFEE008FDF17 /* AppDelegate.swift */,
 				3AA3EADF240BCFEE008FDF17 /* SceneDelegate.swift */,
+				3A0360BF240D26BC00EE2922 /* FeedbackVC.swift */,
 				3AA3EAE1240BCFEE008FDF17 /* BaseScreenVC.swift */,
 				3AA3EAF3240BD26E008FDF17 /* QuizModel.swift */,
 				3AA3EAF5240BD2A6008FDF17 /* QuizFormat.swift */,
@@ -153,6 +156,7 @@
 				3AA3EAE2240BCFEE008FDF17 /* BaseScreenVC.swift in Sources */,
 				3AA3EADE240BCFEE008FDF17 /* AppDelegate.swift in Sources */,
 				3AA3EAE0240BCFEE008FDF17 /* SceneDelegate.swift in Sources */,
+				3A0360C0240D26BC00EE2922 /* FeedbackVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

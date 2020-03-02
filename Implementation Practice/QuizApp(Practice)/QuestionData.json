@@ -1,22 +1,24 @@
 [
     {
-        "question": "What's the keyword for declaring a new variable?",
+        "question": "What is the name of the fraud laywer in the TV series \"Suits\"?",
         "answers": [
-            "var",
-            "let",
-            "variable"
+            "Mike Ross",
+            "Harvey Specter",
+            "Louis Litt",
+            "Harold Jakowski"
         ],
         "correctAnswerIndex": 0,
-        "feedback": "var is the keyword use to declare a new variable."
+        "feedback": "Mike Ross is the genius who pretends to be a lawyer and is also the main character of \"Suits\"."
     },
     {
-        "question": "What's the keyword for declaring a new constant?",
+        "question": "Who isn't an original member in Mike's law firm?",
         "answers": [
-            "constant",
-            "let",
-            "var"
+            "Harvey Spector",
+            "Jessica Pearson",
+            "Robert Zane",
+            "Daniel Hardman"
         ],
-        "correctAnswerIndex": 1,
-        "feedback": "let is the keyword use to declare a new constant."
+        "correctAnswerIndex": 2,
+        "feedback": "Robert Zane was formerly a name partner in \"Rand, Kaldor & Zane\"."
     }
 ]

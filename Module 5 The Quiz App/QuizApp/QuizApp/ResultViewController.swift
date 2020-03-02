@@ -9,6 +9,7 @@
 import UIKit
 
 protocol ResultViewControllerProtocol {
+    
     func dialogDismissed()
 }
 
