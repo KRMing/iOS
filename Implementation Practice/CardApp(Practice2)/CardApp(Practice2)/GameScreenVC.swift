@@ -26,13 +26,9 @@ class GameScreenVC: UIViewController, UICollectionViewDelegate, UICollectionView
     
     let soundPlayer = SoundManager()
     
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        cardsArray = GameModel.fetchCards()
-        cardsLeft = cardsArray!.count
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -152,6 +148,7 @@ class GameScreenVC: UIViewController, UICollectionViewDelegate, UICollectionView
             timer?.invalidate()
             
             score! -= timeLeft
+            StateManager.saveScore(score: score!)
             
             showAlert(title: "Congratulations!", message: "You've won the game!")
         }
@@ -173,9 +170,25 @@ class GameScreenVC: UIViewController, UICollectionViewDelegate, UICollectionView
             
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) {
                 
-//                let startScreenVC = self.storyboard?.instantiateViewController(identifier: "StartScreenVC") as! StartScreenVC
-//                self.present(startScreenVC, animated: true, completion: nil)
-                self.dismiss(animated: true, completion: nil)
+                let scoreResultVC = self.storyboard?.instantiateViewController(identifier: "ScoreResultVC") as! ScoreResultVC
+                
+                let scores = StateManager.loadScore()
+                
+                if scores != nil {
+                    
+                    scoreResultVC.scores = scores
+                }
+                else {
+                    
+                    scoreResultVC.scores = [TimeInterval]()
+                    
+                    for _ in 1...3 {
+                        
+                        scoreResultVC.scores?.append(0)
+                    }
+                }
+
+                self.present(scoreResultVC, animated: true, completion: nil)
             }
         }
         
