@@ -37,6 +37,7 @@ class BaseScreenVC: UIViewController {
         
         choiceTableView.estimatedRowHeight = 100
         choiceTableView.rowHeight = UITableView.automaticDimension
+        choiceTableView.alwaysBounceVertical = false
 
         loadQuestion()
         quizData.shuffle()
