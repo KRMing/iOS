@@ -30,7 +30,7 @@ class BaseScreenVC: UIViewController {
         super.viewDidLoad()
         
         quizModel.delegate = self
-        quizModel.loadData(type: .remote)
+        quizModel.loadData(type: .local)
         
         choiceTableView.delegate = self
         choiceTableView.dataSource = self

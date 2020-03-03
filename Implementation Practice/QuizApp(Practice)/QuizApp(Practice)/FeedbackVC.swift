@@ -55,6 +55,8 @@ class FeedbackVC: UIViewController {
             self.resultLabel.text = self.resultText
             self.feedbackLabel.text = self.feedbackText
             self.feedbackButton.setTitle(self.buttonText, for: .normal)
+            
+            print(self.feedbackText)
         }
     }
     
