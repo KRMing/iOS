@@ -10,7 +10,7 @@ import UIKit
 
 class BaseScreenVC: UIViewController {
     
-    @IBOutlet var rootView: UIView!
+    @IBOutlet weak var rootStackView: UIStackView!
     
     @IBOutlet weak var questionLabel: UILabel!
     
@@ -20,6 +20,8 @@ class BaseScreenVC: UIViewController {
     var quizData: [QuizFormat]!
     var quizIndex: Int = 0
     var numGotCorrect: Int = 0
+    
+    let animationSpeed: TimeInterval = 0.2
     
     var feedbackVC: FeedbackVC?
     
@@ -37,6 +39,7 @@ class BaseScreenVC: UIViewController {
         choiceTableView.rowHeight = UITableView.automaticDimension
 
         loadQuestion()
+        quizData.shuffle()
         questionLabel.text = quizData[quizIndex].question
         
         feedbackVC = storyboard?.instantiateViewController(identifier: "FeedbackVC") as? FeedbackVC
@@ -55,7 +58,7 @@ class BaseScreenVC: UIViewController {
     
     func loadQuestion() {
         
-        toggleRootView(from: 0, to: 1)
+        toggleRootView(from: 0, to: 1, speed: animationSpeed)
         
         if quizIndex < quizData.count {
         
@@ -70,13 +73,16 @@ class BaseScreenVC: UIViewController {
         }
     }
     
-    func loadModalScreen(resultText: String, feedbackText: String, buttonText: String, delay: TimeInterval = 0.5) {
+    func loadModalScreen(resultText: String, feedbackText: String, buttonText: String, delay: TimeInterval = 0.2) {
+        
+        toggleRootView(from: 1, to: 0, speed: 0)
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) {
             
             self.feedbackVC?.resultText = resultText
             self.feedbackVC?.feedbackText = feedbackText
             self.feedbackVC?.buttonText = buttonText
+            self.feedbackVC?.animationSpeed = self.animationSpeed
             
             self.present(self.feedbackVC!, animated: true, completion: nil)
         }
@@ -84,14 +90,17 @@ class BaseScreenVC: UIViewController {
     
     // MARK: Custom Animations
     
-    func toggleRootView(from: CGFloat, to: CGFloat, speed: TimeInterval = 0.8) {
+    func toggleRootView(from: CGFloat, to: CGFloat, speed: TimeInterval = 0.8, delay: TimeInterval = 0) {
         
-        rootView.alpha = from
-        
-        UIView.animate(withDuration: speed) {
+        if quizIndex < quizData.count - 1 {
             
-            self.rootView.alpha = to
+            rootStackView.alpha = from
         }
+        
+        UIView.animate(withDuration: speed, delay: delay, options: .curveEaseOut, animations: {
+            
+            self.rootStackView.alpha = to
+        }, completion: nil)
     }
 }
 
@@ -126,13 +135,13 @@ extension BaseScreenVC: FeedbackDelegate {
                 
                 summaryText = "Excellent!\nPerfect Score!"
             }
-            else if percentage > 0.7 {
+            else if percentage >= 0.7 {
                 
-                summaryText = "You did fairly well.\nKeep up the hard work!"
+                summaryText = "You're definitely above average.\nKeep up the hard work!"
             }
-            else if percentage > 0.3 {
+            else if percentage >= 0.3 {
                 
-                summaryText = "Needs more effort.\nPractice makes perfect!"
+                summaryText = "Need more effort.\nPractice makes perfect!"
             }
             else {
                 
@@ -141,9 +150,9 @@ extension BaseScreenVC: FeedbackDelegate {
             
             summaryText += "\n\n Got \(numGotCorrect) out of \(quizData.count) questions."
             
-            toggleRootView(from: 0, to: 1, speed: 0.3)
             loadModalScreen(resultText: "Summary", feedbackText: summaryText, buttonText: "Restart")
             
+            quizData.shuffle()
             quizIndex = -1
             numGotCorrect = 0
         }

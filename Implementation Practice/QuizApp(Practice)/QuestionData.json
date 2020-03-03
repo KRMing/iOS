@@ -20,5 +20,93 @@
         ],
         "correctAnswerIndex": 2,
         "feedback": "Robert Zane is not the original member of Pearson Hardman, formerly being a name partner in \"Rand, Kaldor & Zane\"."
+    },
+    {
+        "question": "What is the name of Mike's lover?",
+        "answers": [
+            "Katrina Bennett",
+            "Harvey Specter",
+            "Rachel Zane",
+            "Donna Paulsen"
+        ],
+        "correctAnswerIndex": 2,
+        "feedback": "Rachel Zane is the one married to Mike Ross."
+    },
+    {
+        "question": "Who has slept with Harvey more than twice?",
+        "answers": [
+            "Rachel Zane",
+            "Donna Paulsen",
+            "Jessica Pearson",
+            "Dana Scott"
+        ],
+        "correctAnswerIndex": 3,
+        "feedback": "Dana Scott, a.k.a. Scottie was once in love with Harvey Specter."
+    },
+    {
+        "question": "Who has Louis taken to the mud massage?",
+        "answers": [
+            "Donna Paulsen",
+            "Harvey Specter",
+            "Mike Ross",
+            "Jessica Pearson"
+        ],
+        "correctAnswerIndex": 0,
+        "feedback": "Louis took Donna to the mud bath."
+    },
+    {
+        "question": "Which school is the one Pearson Hardman only accepts?",
+        "answers": [
+            "Columbia School of Law",
+            "Yale School of Law",
+            "Duke School of Law",
+            "Harvard School of Law"
+        ],
+        "correctAnswerIndex": 3,
+        "feedback": "Pearson Hardman only accepts Harvard Law graduates."
+    },
+    {
+        "question": "What did Trevor do to make a load of cash?",
+        "answers": [
+            "Computer science",
+            "Drug dealing",
+            "Male prostitute",
+            "Fraud"
+        ],
+        "correctAnswerIndex": 1,
+        "feedback": "Trevor sold drugs and almost put Mike in jeopardy."
+    },
+    {
+        "question": "Why did Harvey hate his mom in the past?",
+        "answers": [
+            "She had a hidden child",
+            "She didn't show affection to Harvey",
+            "She had bad temper",
+            "She cheated on her husband"
+        ],
+        "correctAnswerIndex": 3,
+        "feedback": "Harvey hated his mom because she cheated on Harvey's dad, shattering the family bond."
+    },
+    {
+        "question": "Why did Mike get kicked out of school?",
+        "answers": [
+            "He fucked the dean's daughter",
+            "He sold drugs to the dean's daughter",
+            "He sold a test to the dean's daughter",
+            "He assaulted the dean's daughter"
+        ],
+        "correctAnswerIndex": 2,
+        "feedback": "Mike was kicked out of school because he sold a calculus test to the dean's daughter."
+    },
+    {
+        "question": "What is the occupation of Harvey's dad?",
+        "answers": [
+            "Musician",
+            "Painter",
+            "Lawyer",
+            "Teacher"
+        ],
+        "correctAnswerIndex": 0,
+        "feedback": "Harvey's dad is a musician and Harvey treasures his father's records."
     }
 ]

@@ -107,8 +107,7 @@
                     <connections>
                         <outlet property="choiceTableView" destination="unB-Jd-1r3" id="2Um-mL-gdR"/>
                         <outlet property="questionLabel" destination="D3v-vT-FUu" id="5zR-W2-QS8"/>
-                        <outlet property="rootView" destination="8bC-Xf-vdC" id="r6Z-SQ-Jzq"/>
-                        <segue destination="7zH-Z8-siX" kind="presentation" identifier="BaseToFeedback" modalPresentationStyle="fullScreen" id="JaY-Jw-bhd"/>
+                        <outlet property="rootStackView" destination="fpP-hP-uAe" id="XF2-3t-sf4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -18,20 +18,12 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="zFw-wf-v7q">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Data..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vi-5c-lNM">
-                                <rect key="frame" x="115" y="209" width="184" height="35"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="25"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="5vi-5c-lNM" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="0.5" id="0Eu-4c-EVr"/>
                             <constraint firstItem="zFw-wf-v7q" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="5J9-6f-c79"/>
                             <constraint firstItem="zFw-wf-v7q" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="8qU-qz-fpZ"/>
                             <constraint firstAttribute="bottom" secondItem="zFw-wf-v7q" secondAttribute="bottom" id="anE-sM-7h5"/>
-                            <constraint firstItem="5vi-5c-lNM" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="iLB-cL-JfI"/>
                             <constraint firstAttribute="trailing" secondItem="zFw-wf-v7q" secondAttribute="trailing" id="psY-Wz-L3j"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -39,7 +31,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="26" y="370"/>
         </scene>
     </scenes>
     <resources>

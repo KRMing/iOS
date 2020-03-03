@@ -33,17 +33,24 @@ class FeedbackVC: UIViewController {
     var feedbackText: String = ""
     var buttonText: String = ""
     
+    var animationSpeed: TimeInterval = 0.15
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        self.feedbackView.layer.cornerRadius = 10
+        self.feedbackView.layer.masksToBounds = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
         DispatchQueue.main.async {
             
-            self.feedbackView.layer.cornerRadius = 8
-            self.feedbackView.layer.masksToBounds = true
+            self.backgroundView.alpha = 0
+            self.resultLabel.alpha = 0
+            self.feedbackLabel.alpha = 0
+            self.feedbackButton.alpha = 0
             
             self.resultLabel.text = self.resultText
             self.feedbackLabel.text = self.feedbackText
@@ -51,10 +58,27 @@ class FeedbackVC: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+        UIView.animate(withDuration: animationSpeed, delay: 0, options: .curveEaseOut, animations: {
+            
+            self.backgroundView.alpha = 1
+            self.resultLabel.alpha = 1
+            self.feedbackLabel.alpha = 1
+            self.feedbackButton.alpha = 1
+        }, completion: nil)
+    }
+    
     @IBAction func didTouchFeedbackButton(_ sender: Any) {
         
-        delegate.feedbackButtonTapped()
-        self.dismiss(animated: true, completion: nil)
+        UIView.animate(withDuration: animationSpeed, delay: 0, options: .curveEaseOut, animations: {
+            
+            self.backgroundView.alpha = 0
+        }) { (_) in
+            
+            self.dismiss(animated: true, completion: nil)
+            self.delegate.feedbackButtonTapped()
+        }
     }
     
 }
