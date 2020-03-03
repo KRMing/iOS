@@ -17,7 +17,7 @@ class BaseScreenVC: UIViewController {
     @IBOutlet weak var choiceTableView: UITableView!
     
     var quizModel = QuizModel()
-    var quizData: [QuizFormat]!
+    var quizData = [QuizFormat]()
     var quizIndex: Int = 0
     var numGotCorrect: Int = 0
     
@@ -30,7 +30,7 @@ class BaseScreenVC: UIViewController {
         super.viewDidLoad()
         
         quizModel.delegate = self
-        quizModel.loadData(type: .local)
+        quizModel.loadData(type: .remote)
         
         choiceTableView.delegate = self
         choiceTableView.dataSource = self
@@ -39,10 +39,6 @@ class BaseScreenVC: UIViewController {
         choiceTableView.rowHeight = UITableView.automaticDimension
         choiceTableView.alwaysBounceVertical = false
 
-        loadQuestion()
-        quizData.shuffle()
-        questionLabel.text = quizData[quizIndex].question
-        
         feedbackVC = storyboard?.instantiateViewController(identifier: "FeedbackVC") as? FeedbackVC
         feedbackVC?.delegate = self
     }
@@ -112,6 +108,11 @@ extension BaseScreenVC: QuizModelDelegate {
     func assignDataToDelegate(elementArray: [QuizFormat]) {
         
         self.quizData = elementArray
+        
+        quizData.shuffle()
+        loadQuestion()
+        questionLabel.text = quizData[quizIndex].question
+        choiceTableView.reloadData()
     }
 }
 

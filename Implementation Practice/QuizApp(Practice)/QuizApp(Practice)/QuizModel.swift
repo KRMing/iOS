@@ -63,7 +63,10 @@ class QuizModel {
                 return
             }
             
-            self.delegate.assignDataToDelegate(elementArray: array!)
+            DispatchQueue.main.async {
+                
+                self.delegate.assignDataToDelegate(elementArray: array!)
+            }
         }
         catch {
             
