@@ -107,6 +107,7 @@
                     <connections>
                         <outlet property="choiceTableView" destination="unB-Jd-1r3" id="2Um-mL-gdR"/>
                         <outlet property="questionLabel" destination="D3v-vT-FUu" id="5zR-W2-QS8"/>
+                        <outlet property="rootView" destination="8bC-Xf-vdC" id="r6Z-SQ-Jzq"/>
                         <segue destination="7zH-Z8-siX" kind="presentation" identifier="BaseToFeedback" modalPresentationStyle="fullScreen" id="JaY-Jw-bhd"/>
                     </connections>
                 </viewController>
@@ -125,6 +126,10 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="Mnn-Pu-40g">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CmS-Ac-ulc">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9S7-RZ-yb0">
                                 <rect key="frame" x="40" y="144" width="334" height="618"/>
                                 <subviews>
@@ -169,17 +174,22 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="9S7-RZ-yb0" firstAttribute="top" secondItem="10M-6b-Ppn" secondAttribute="top" constant="100" id="6Nh-aP-w7m"/>
+                            <constraint firstAttribute="bottom" secondItem="CmS-Ac-ulc" secondAttribute="bottom" id="CCn-S9-Af0"/>
                             <constraint firstItem="10M-6b-Ppn" firstAttribute="bottom" secondItem="9S7-RZ-yb0" secondAttribute="bottom" constant="100" id="D3Y-IQ-Why"/>
                             <constraint firstItem="Mnn-Pu-40g" firstAttribute="leading" secondItem="btb-aY-sKt" secondAttribute="leading" id="FUs-Is-xjl"/>
                             <constraint firstItem="Mnn-Pu-40g" firstAttribute="top" secondItem="btb-aY-sKt" secondAttribute="top" id="L5p-Ec-d0M"/>
+                            <constraint firstAttribute="trailing" secondItem="CmS-Ac-ulc" secondAttribute="trailing" id="TEa-wh-c0O"/>
                             <constraint firstAttribute="bottom" secondItem="Mnn-Pu-40g" secondAttribute="bottom" id="Wvy-Mr-Xig"/>
+                            <constraint firstItem="CmS-Ac-ulc" firstAttribute="leading" secondItem="btb-aY-sKt" secondAttribute="leading" id="azZ-zY-XTc"/>
                             <constraint firstAttribute="trailing" secondItem="Mnn-Pu-40g" secondAttribute="trailing" id="bug-UA-zR3"/>
                             <constraint firstItem="10M-6b-Ppn" firstAttribute="trailing" secondItem="9S7-RZ-yb0" secondAttribute="trailing" constant="40" id="fCk-H4-j7Z"/>
                             <constraint firstItem="9S7-RZ-yb0" firstAttribute="leading" secondItem="10M-6b-Ppn" secondAttribute="leading" constant="40" id="wQB-R5-oWt"/>
+                            <constraint firstItem="CmS-Ac-ulc" firstAttribute="top" secondItem="btb-aY-sKt" secondAttribute="top" id="yUo-fD-UGQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="10M-6b-Ppn"/>
                     </view>
                     <connections>
+                        <outlet property="backgroundView" destination="CmS-Ac-ulc" id="HS1-la-JBX"/>
                         <outlet property="feedbackButton" destination="41a-QH-ZaE" id="Hyi-bU-Xhl"/>
                         <outlet property="feedbackLabel" destination="Hqn-2G-EVo" id="qTI-iw-i94"/>
                         <outlet property="feedbackView" destination="9S7-RZ-yb0" id="Yzv-Xi-dyO"/>

@@ -10,12 +10,14 @@ import UIKit
 
 protocol FeedbackDelegate {
 
-
+    func feedbackButtonTapped ()
 }
 
 class FeedbackVC: UIViewController {
 
     @IBOutlet var rootView: UIView!
+    
+    @IBOutlet weak var backgroundView: UIView!
     
     @IBOutlet weak var resultLabel: UILabel!
 
@@ -27,18 +29,31 @@ class FeedbackVC: UIViewController {
     
     var delegate: FeedbackDelegate!
     
+    var resultText: String = ""
+    var feedbackText: String = ""
+    var buttonText: String = ""
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
-
-        feedbackView.layer.cornerRadius = 8
-        feedbackView.layer.masksToBounds = true
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         
+        DispatchQueue.main.async {
+            
+            self.feedbackView.layer.cornerRadius = 8
+            self.feedbackView.layer.masksToBounds = true
+            
+            self.resultLabel.text = self.resultText
+            self.feedbackLabel.text = self.feedbackText
+            self.feedbackButton.setTitle(self.buttonText, for: .normal)
+        }
     }
     
     @IBAction func didTouchFeedbackButton(_ sender: Any) {
         
+        delegate.feedbackButtonTapped()
         self.dismiss(animated: true, completion: nil)
     }
     

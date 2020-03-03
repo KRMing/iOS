@@ -10,6 +10,8 @@ import UIKit
 
 class BaseScreenVC: UIViewController {
     
+    @IBOutlet var rootView: UIView!
+    
     @IBOutlet weak var questionLabel: UILabel!
     
     @IBOutlet weak var choiceTableView: UITableView!
@@ -17,6 +19,7 @@ class BaseScreenVC: UIViewController {
     var quizModel = QuizModel()
     var quizData: [QuizFormat]!
     var quizIndex: Int = 0
+    var numGotCorrect: Int = 0
     
     var feedbackVC: FeedbackVC?
     
@@ -33,14 +36,62 @@ class BaseScreenVC: UIViewController {
         choiceTableView.estimatedRowHeight = 100
         choiceTableView.rowHeight = UITableView.automaticDimension
 
+        loadQuestion()
         questionLabel.text = quizData[quizIndex].question
         
         feedbackVC = storyboard?.instantiateViewController(identifier: "FeedbackVC") as? FeedbackVC
-        feedbackVC?.modalPresentationStyle = .overCurrentContext
-
         feedbackVC?.delegate = self
+    }
+    
+    // MARK: Modal Screen Presentation Style
+    
+    override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
         
+        viewControllerToPresent.modalPresentationStyle = .overCurrentContext
+        super.present(viewControllerToPresent, animated: flag, completion: completion)
+    }
+    
+    // MARK: - Game Logic
+    
+    func loadQuestion() {
         
+        toggleRootView(from: 0, to: 1)
+        
+        if quizIndex < quizData.count {
+        
+            let currentQuestion = quizData[quizIndex]
+            
+            questionLabel.text = currentQuestion.question
+        }
+        else {
+            
+            // index out of range
+            questionLabel.text = ""
+        }
+    }
+    
+    func loadModalScreen(resultText: String, feedbackText: String, buttonText: String, delay: TimeInterval = 0.5) {
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) {
+            
+            self.feedbackVC?.resultText = resultText
+            self.feedbackVC?.feedbackText = feedbackText
+            self.feedbackVC?.buttonText = buttonText
+            
+            self.present(self.feedbackVC!, animated: true, completion: nil)
+        }
+    }
+    
+    // MARK: Custom Animations
+    
+    func toggleRootView(from: CGFloat, to: CGFloat, speed: TimeInterval = 0.8) {
+        
+        rootView.alpha = from
+        
+        UIView.animate(withDuration: speed) {
+            
+            self.rootView.alpha = to
+        }
     }
 }
 
@@ -56,7 +107,47 @@ extension BaseScreenVC: QuizModelDelegate {
 
 extension BaseScreenVC: FeedbackDelegate {
 
-
+    func feedbackButtonTapped() {
+        
+        if quizIndex < quizData.count - 1 {
+            
+            quizIndex += 1
+            loadQuestion()
+            choiceTableView.reloadData()
+        }
+        else {
+            
+            // present summary screen
+            
+            let percentage = Double(numGotCorrect) / Double(quizData.count)
+            var summaryText: String
+            
+            if percentage == 1.0 {
+                
+                summaryText = "Excellent!\nPerfect Score!"
+            }
+            else if percentage > 0.7 {
+                
+                summaryText = "You did fairly well.\nKeep up the hard work!"
+            }
+            else if percentage > 0.3 {
+                
+                summaryText = "Needs more effort.\nPractice makes perfect!"
+            }
+            else {
+                
+                summaryText = "Try reviewing the materials.\nBetter luck next time!"
+            }
+            
+            summaryText += "\n\n Got \(numGotCorrect) out of \(quizData.count) questions."
+            
+            toggleRootView(from: 0, to: 1, speed: 0.3)
+            loadModalScreen(resultText: "Summary", feedbackText: summaryText, buttonText: "Restart")
+            
+            quizIndex = -1
+            numGotCorrect = 0
+        }
+    }
 }
 
 extension BaseScreenVC: UITableViewDelegate, UITableViewDataSource {
@@ -65,13 +156,13 @@ extension BaseScreenVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if quizData.count == 0{
+        if quizIndex < quizData.count {
             
-            return 0
+            return quizData[quizIndex].answers.count
         }
         else {
             
-            return quizData[quizIndex].answers.count
+            return 0
         }
     }
     
@@ -100,35 +191,17 @@ extension BaseScreenVC: UITableViewDelegate, UITableViewDataSource {
         
         let currentQuestion = quizData[quizIndex]
         
+        let delay: TimeInterval = 0.0
+        
         if currentQuestion.correctAnswerIndex == indexPath.row {
+
+            numGotCorrect += 1
             
-            feedbackVC?.resultLabel.text = "Correct!"
+            loadModalScreen(resultText: "Correct!", feedbackText: currentQuestion.feedback, buttonText: "Ok!", delay: delay)
         }
         else {
             
-            feedbackVC?.resultLabel.text = "Wrong!"
+            loadModalScreen(resultText: "Wrong!", feedbackText: currentQuestion.feedback, buttonText: "Got it!", delay: delay)
         }
-        
-        let delay: TimeInterval = 0.5
-        
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) {
-            
-            // use perform seque, prepare(for segue:)
-//            self.performSegue(withIdentifier: "BaseToFeedback", sender: self)
-            
-            self.present(self.feedbackVC!, animated: true, completion: nil)
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        
-    }
-    
-    
-    override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
-        
-        viewControllerToPresent.modalPresentationStyle = .overCurrentContext
-        super.present(viewControllerToPresent, animated: flag, completion: completion)
     }
 }
