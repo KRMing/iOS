@@ -55,7 +55,7 @@ class BaseScreenVC: UIViewController {
         super.present(viewControllerToPresent, animated: flag, completion: completion)
     }
     
-    // MARK: - Game Logic
+    // MARK: - Game Display
     
     func loadQuestion() {
         

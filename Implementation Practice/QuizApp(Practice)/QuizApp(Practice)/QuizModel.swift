@@ -63,7 +63,7 @@ class QuizModel {
                 return
             }
             
-            delegate.assignDataToDelegate(elementArray: array!)
+            self.delegate.assignDataToDelegate(elementArray: array!)
         }
         catch {
             
@@ -74,6 +74,41 @@ class QuizModel {
     
     func fetchRemoteJsonData() {
             
+        let urlString = "https://raw.githubusercontent.com/KRMing/iOS/master/Implementation%20Practice/QuizApp(Practice)/QuestionData.json"
         
+        let url = URL(string: urlString)
+        
+        guard url != nil else {
+            
+            print("url could not be retreived!")
+            return
+        }
+        
+        let session = URLSession.shared
+        
+        let dataTask = session.dataTask(with: url!) { (data, response, error) in
+            
+            if error == nil && data != nil {
+                
+                do {
+                    
+                    let decoder = JSONDecoder()
+                    
+                    let array = try decoder.decode([QuizFormat].self, from: data!)
+                    
+                    DispatchQueue.main.async {
+                        
+                        self.delegate.assignDataToDelegate(elementArray: array)
+                    }
+                }
+                catch {
+                    
+                    print("couldn't parse JSON")
+                    return
+                }
+            }
+        }
+        
+        dataTask.resume()
     }
 }

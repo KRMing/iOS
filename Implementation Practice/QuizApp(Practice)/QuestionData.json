@@ -33,7 +33,7 @@
         "feedback": "Rachel Zane is the one married to Mike Ross."
     },
     {
-        "question": "Who has slept with Harvey more than twice?",
+        "question": "Who was formerly a lover of Harvey?",
         "answers": [
             "Rachel Zane",
             "Donna Paulsen",
@@ -70,7 +70,7 @@
         "answers": [
             "Computer science",
             "Drug dealing",
-            "Male prostitute",
+            "Male prostitution",
             "Fraud"
         ],
         "correctAnswerIndex": 1,
