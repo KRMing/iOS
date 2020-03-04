@@ -29,6 +29,29 @@ class ViewController: UIViewController {
         
         model.getArticles()
     }
+    
+    // MARK: Segue Methods
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // detect which article the user selected
+        let indexPath = tableView.indexPathForSelectedRow
+        
+        guard indexPath != nil else {
+            
+            print("the indexpath user has selected is nil")
+            return
+        }
+        
+        // get the article the user tapped on
+        let article = articles[indexPath!.row]
+        
+        // get a reference to the detail view controller
+        let detailVC = segue.destination as! DetailViewController
+        
+        // pass the article url to the detail view controller
+        detailVC.articleURL = article.url!
+    }
 }
 
 extension ViewController: ArticleModelProtocol {
@@ -68,6 +91,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
+        // user has just selected a row, trigger the seuge to go to detail
+        performSegue(withIdentifier: "goToDetail", sender: self)
     }
+
+    // hide the article that can't display an image
 }

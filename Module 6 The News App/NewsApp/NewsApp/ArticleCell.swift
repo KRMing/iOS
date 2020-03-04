@@ -22,6 +22,15 @@ class ArticleCell: UITableViewCell {
         headlineLabel.text = ""
         articleImageView.image = nil
         
+        headlineLabel.alpha = 0
+        articleImageView.alpha = 0
+        
+        // animate the label into view
+        UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseOut, animations: {
+            
+            self.headlineLabel.alpha = 1
+        }, completion: nil)
+        
         // keep a reference to the article
         articleToDisplay = article
         
@@ -39,15 +48,30 @@ class ArticleCell: UITableViewCell {
         }
         
         // create a url string
-        let urlString = articleToDisplay!.urlToImage
+        let urlString = articleToDisplay!.urlToImage!
 
+        // check the cachemanager before downloading any image data
+        if let imageData = CacheManager.retrieveData(urlString) {
+            
+            // there is image data, set the image view and return
+            articleImageView.image = UIImage(data: imageData)
+            
+            // animate the image into view
+            UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseOut, animations: {
+                
+                self.articleImageView.alpha = 1
+            }, completion: nil)
+            
+            return
+        }
+        
         // create the url
-        let url = URL(string: urlString!)
+        let url = URL(string: urlString)
 
         // check that the url isn't nill
         guard url != nil else {
             
-            print("couldn't retrieve url from url string: \(urlString!)")
+            print("couldn't instantiate url from url string: \(urlString)")
             return
         }
         
@@ -63,10 +87,18 @@ class ArticleCell: UITableViewCell {
                 // check that there were no errors
                 if data != nil && error == nil {
                     
+                    CacheManager.saveData(urlString, data!)
+                    
                     DispatchQueue.main.async {
                         
                         // display the image data in the image view
                         self.articleImageView.image = UIImage(data: data!)
+                        
+                        // animate the image into view
+                        UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseOut, animations: {
+                            
+                            self.articleImageView.alpha = 1
+                        }, completion: nil)
                     }
                 }
             }

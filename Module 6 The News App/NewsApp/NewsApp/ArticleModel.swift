@@ -18,14 +18,14 @@ class ArticleModel {
     var delegate: ArticleModelProtocol?
     
     static let apiKey: String = "362e84596e4144fd8007ad4a56b95d8a"
+    static let apiUrl: String = "http://newsapi.org/v2/everything?q=apple&from=2020-03-03&to=2020-03-03&sortBy=popularity&apiKey="
     
     func getArticles() {
         
         // fire off the request to the API
         
         // create a string URL
-        
-        let urlString = "http://newsapi.org/v2/everything?q=bitcoin&from=2020-02-04&sortBy=publishedAt&apiKey=" + ArticleModel.apiKey
+        let urlString = ArticleModel.apiUrl + ArticleModel.apiKey
         
         // create a URL object
         let url = URL(string: urlString)
