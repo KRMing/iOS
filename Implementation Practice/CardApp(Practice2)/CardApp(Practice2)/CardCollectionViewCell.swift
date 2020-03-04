@@ -20,7 +20,7 @@ class CardCollectionViewCell: UICollectionViewCell {
                 
         self.card = card
         
-        cardFrontImage.image = UIImage(named: self.card!.frontImageName)
+        cardFrontImage.image = UIImage(named: card.frontImageName)
         cardBackImage.image = UIImage(named: "back")
 
         if self.card!.isMatched {
