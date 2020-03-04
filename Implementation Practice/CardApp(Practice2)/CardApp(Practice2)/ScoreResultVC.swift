@@ -93,17 +93,17 @@ extension ScoreResultVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath)
         
-        let label = cell?.viewWithTag(1) as? UILabel
+        let label = cell.viewWithTag(1) as? UILabel
         
-        let view = cell?.viewWithTag(2)
+        let view = cell.viewWithTag(2)
         
         label?.text = String(format: "#\(indexPath.row + 1) : %.2f seconds", Double(scores![indexPath.row]) / 1000.0)
         
         view?.layer.cornerRadius = 7
         view?.layer.masksToBounds = true
         
-        return cell!
+        return cell
     }
 }

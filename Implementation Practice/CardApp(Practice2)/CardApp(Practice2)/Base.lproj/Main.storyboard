@@ -267,12 +267,13 @@
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFm-fQ-1Pb">
                                                                             <rect key="frame" x="30" y="15" width="460" height="20.5"/>
+                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="15"/>
-                                                                            <nil key="textColor"/>
+                                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                     </subviews>
-                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="bottom" secondItem="FFm-fQ-1Pb" secondAttribute="bottom" constant="15" id="3Tv-Th-4Yd"/>
                                                                         <constraint firstItem="FFm-fQ-1Pb" firstAttribute="top" secondItem="JiY-GA-bRb" secondAttribute="top" constant="15" id="Rht-Ye-Dmj"/>
