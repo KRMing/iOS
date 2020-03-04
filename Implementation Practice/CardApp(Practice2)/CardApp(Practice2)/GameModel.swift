@@ -32,7 +32,10 @@ class GameModel {
             randNumsArray.append(randNum)
         }
         
-        cardsArray.shuffle()
+        for _ in 1...3 {
+            
+            cardsArray.shuffle()
+        }
         
         return cardsArray
     }

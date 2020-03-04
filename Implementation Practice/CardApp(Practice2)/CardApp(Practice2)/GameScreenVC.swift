@@ -19,12 +19,13 @@ class GameScreenVC: UIViewController, UICollectionViewDelegate, UICollectionView
 
     var firstSelectIndex: IndexPath?
     
-    var score: TimeInterval?
-    
-    var timeLeft: TimeInterval = 50 * 1000
+    static let timeLimit: TimeInterval = 50 * 1000
+    var timeLeft: TimeInterval = GameScreenVC.timeLimit
     var timer: Timer?
     
     let soundPlayer = SoundManager()
+    
+    var score: TimeInterval = GameScreenVC.timeLimit
     
     override func viewDidLoad() {
         
@@ -33,12 +34,16 @@ class GameScreenVC: UIViewController, UICollectionViewDelegate, UICollectionView
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        score = timeLeft
-
         timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
         RunLoop.main.add(timer!, forMode: .common)
         
         soundPlayer.playSound(type: .shuffle)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        cardsArray = GameModel.fetchCards()
+        cardsLeft = cardsArray!.count
     }
     
     // MARK: Timer Functions
@@ -147,8 +152,8 @@ class GameScreenVC: UIViewController, UICollectionViewDelegate, UICollectionView
             
             timer?.invalidate()
             
-            score! -= timeLeft
-            StateManager.saveScore(score: score!)
+            score -= timeLeft
+            StateManager.saveScore(score: score)
             
             showAlert(title: "Congratulations!", message: "You've won the game!")
         }
@@ -172,6 +177,8 @@ class GameScreenVC: UIViewController, UICollectionViewDelegate, UICollectionView
                 
                 let scoreResultVC = self.storyboard?.instantiateViewController(identifier: "ScoreResultVC") as! ScoreResultVC
                 
+                scoreResultVC.userScore = self.score
+                
                 let scores = StateManager.loadScore()
                 
                 if scores != nil {
@@ -184,7 +191,7 @@ class GameScreenVC: UIViewController, UICollectionViewDelegate, UICollectionView
                     
                     for _ in 1...3 {
                         
-                        scoreResultVC.scores?.append(0)
+                        scoreResultVC.scores?.append(GameScreenVC.timeLimit)
                     }
                 }
 

@@ -21,13 +21,15 @@ class StateManager {
         if scores == nil {
             
             scores = [TimeInterval]()
-            scores?.append(0)
-            scores?.append(0)
-            scores?.append(0)
+            
+            for _ in 1...3 {
+                
+                scores?.append(GameScreenVC.timeLimit)
+            }
         }
         
         scores!.append(score)
-        scores!.sort(by: >)
+        scores!.sort(by: <)
         scores!.remove(at: 3)
 
         defaults.set(scores!, forKey: bestScoreKey)

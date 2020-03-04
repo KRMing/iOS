@@ -25,9 +25,6 @@ class StartScreenVC: UIViewController {
         
         let gameScreenVC = storyboard?.instantiateViewController(withIdentifier: "GameScreenVC") as! GameScreenVC
         
-        gameScreenVC.cardsArray = GameModel.fetchCards()
-        gameScreenVC.cardsLeft = gameScreenVC.cardsArray!.count
-        
         present(gameScreenVC, animated: true, completion: nil)
     }
 }
