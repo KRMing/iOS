@@ -13,6 +13,11 @@
 		3A4EC675240FBF280098DF11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A4EC673240FBF280098DF11 /* Main.storyboard */; };
 		3A4EC677240FBF2A0098DF11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A4EC676240FBF2A0098DF11 /* Assets.xcassets */; };
 		3A4EC67A240FBF2A0098DF11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A4EC678240FBF2A0098DF11 /* LaunchScreen.storyboard */; };
+		3A4EC684240FBF7C0098DF11 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4EC683240FBF7C0098DF11 /* Article.swift */; };
+		3A4EC686240FC0B00098DF11 /* ArticleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4EC685240FC0B00098DF11 /* ArticleService.swift */; };
+		3A4EC688240FC0EE0098DF11 /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4EC687240FC0EE0098DF11 /* ArticleModel.swift */; };
+		3A4EC68A240FCA080098DF11 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4EC689240FCA080098DF11 /* DetailViewController.swift */; };
+		3A4EC68C240FCF020098DF11 /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4EC68B240FCF020098DF11 /* ArticleCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		3A4EC676240FBF2A0098DF11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A4EC679240FBF2A0098DF11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A4EC67B240FBF2A0098DF11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A4EC683240FBF7C0098DF11 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		3A4EC685240FC0B00098DF11 /* ArticleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleService.swift; sourceTree = "<group>"; };
+		3A4EC687240FC0EE0098DF11 /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
+		3A4EC689240FCA080098DF11 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		3A4EC68B240FCF020098DF11 /* ArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +68,12 @@
 			children = (
 				3A4EC66D240FBF280098DF11 /* AppDelegate.swift */,
 				3A4EC66F240FBF280098DF11 /* SceneDelegate.swift */,
+				3A4EC689240FCA080098DF11 /* DetailViewController.swift */,
 				3A4EC671240FBF280098DF11 /* ViewController.swift */,
+				3A4EC68B240FCF020098DF11 /* ArticleCell.swift */,
+				3A4EC687240FC0EE0098DF11 /* ArticleModel.swift */,
+				3A4EC685240FC0B00098DF11 /* ArticleService.swift */,
+				3A4EC683240FBF7C0098DF11 /* Article.swift */,
 				3A4EC673240FBF280098DF11 /* Main.storyboard */,
 				3A4EC676240FBF2A0098DF11 /* Assets.xcassets */,
 				3A4EC678240FBF2A0098DF11 /* LaunchScreen.storyboard */,
@@ -138,9 +153,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A4EC68C240FCF020098DF11 /* ArticleCell.swift in Sources */,
+				3A4EC686240FC0B00098DF11 /* ArticleService.swift in Sources */,
+				3A4EC684240FBF7C0098DF11 /* Article.swift in Sources */,
 				3A4EC672240FBF280098DF11 /* ViewController.swift in Sources */,
 				3A4EC66E240FBF280098DF11 /* AppDelegate.swift in Sources */,
+				3A4EC688240FC0EE0098DF11 /* ArticleModel.swift in Sources */,
 				3A4EC670240FBF280098DF11 /* SceneDelegate.swift in Sources */,
+				3A4EC68A240FCA080098DF11 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +307,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 854W52Q8YX;
 				INFOPLIST_FILE = NewsApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -305,6 +326,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 854W52Q8YX;
 				INFOPLIST_FILE = NewsApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
