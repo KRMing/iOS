@@ -44,7 +44,7 @@ class ScoreResultVC: UIViewController {
         titleView.layer.cornerRadius = 10
         titleView.layer.masksToBounds = true
         
-        titleLabel.text = "Hall of Fame"
+        titleLabel.text = "Record Summary!"
         
         userScoreView.layer.cornerRadius = 7
         userScoreView.layer.masksToBounds = true
