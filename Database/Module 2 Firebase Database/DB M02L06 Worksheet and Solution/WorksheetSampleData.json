@@ -1,0 +1,68 @@
+{
+  "quotes" : {
+    "jdo3479s" : {
+      "author" : {
+        "name" : "George Sand"
+      },
+      "type" : "Life",
+      "likes" : 20,
+      "title" : "There is only one happiness in this life, to love and be loved."
+    },
+    "sdn39djfos" : {
+      "author" : {
+        "name" : "Carol Burnett"
+      },
+      "type" : "Life",
+      "likes" : 10,
+      "title" : "Only I can change my life. No one can do it for me."
+    },
+    "shdf8ls" : {
+      "author" : {
+        "name" : "Charles R. Swindoll"
+      },
+      "type" : "Life",
+      "likes" : 10,
+      "title" : "Life is 10% what happens to you and 90% how you react to it."
+    },
+    "2hdfks8" : {
+      "author" : {
+        "name" : "Alan Alda"
+      },
+      "type" : "Inspirational",
+      "likes" : 9,
+      "title" : "Be brave enough to live life creatively. The creative place where no one else has ever been."
+    },
+    "sfh92so1" : {
+      "author" : {
+        "name" : "Buddha"
+      },
+      "type" : "Inspirational",
+      "likes" : 3,
+      "title" : "What we think, we become."
+    },
+    "j39fs71j" : {
+      "author" : {
+        "name" : "Theodore Roosevelt"
+      },
+      "type" : "Inspirational",
+      "likes" : 19,
+      "title" : "Believe you can and you're halfway there."
+    },
+    "fhsiwh1" : {
+      "author" : {
+        "name" : "Nelson Mandela"
+      },
+      "type" : "Education",
+      "likes" : 19,
+      "title" : "Education is the most powerful weapon which you can use to change the world."
+    },
+    "fhgy82d" : {
+      "author" : {
+        "name" : "Benjamin Franklin"
+      },
+      "type" : "Education",
+      "likes" : 19,
+      "title" : "An investment in knowledge pays the best interest."
+    }
+  }
+}
