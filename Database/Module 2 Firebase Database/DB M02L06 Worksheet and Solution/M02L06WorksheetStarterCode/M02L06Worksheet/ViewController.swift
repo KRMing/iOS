@@ -31,8 +31,11 @@ class ViewController: UIViewController {
     }
 
     override func didReceiveMemoryWarning() {
+        
         super.didReceiveMemoryWarning()
+        
         // Dispose of any resources that can be recreated.
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -41,8 +44,10 @@ class ViewController: UIViewController {
         let destinationVC = segue.destination as! DetailViewController
         
         // TODO: Get selected quote
+        let indexPath = self.tableView.indexPathForSelectedRow!
         
         // TODO: Pass selected quote to detail view controller
+        destinationVC.quote = quotes[indexPath.row]
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -54,9 +59,24 @@ class ViewController: UIViewController {
     func getData() {
         
         // TODO: The database call to get the quotes
-        
+        dbRef?.child("quotes").observeSingleEvent(of: .value, with: { snapshot in
+            
+            let snapshots = snapshot.children.allObjects as! [DataSnapshot]
+            
+            self.quotes.removeAll()
+            
+            for snap in snapshots {
+
+                let snapDict = snap.value as! [String: Any]
+                
+                let author = snapDict["author"] as! [String: String]
+                
+                self.quotes.append(Quote(title: snapDict["title"] as? String, authorName: author["name"]))
+            }
+            
+            self.tableView.reloadData()
+        })
     }
-    
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
@@ -72,19 +92,20 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "QuoteCell", for: indexPath)
         
         // TODO: Get labels
-        
+        let quote = cell.viewWithTag(1) as! UILabel
+        let author = cell.viewWithTag(2) as! UILabel
         
         // TODO: Set labels
-        
+        quote.text = quotes[indexPath.row].title
+        author.text = quotes[indexPath.row].authorName
         
         return cell
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // TODO: Trigger Segue
-        
+        performSegue(withIdentifier: "goToDetail", sender: self)
     }
     
 }

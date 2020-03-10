@@ -14,7 +14,7 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var authorLabel: UILabel!
 
-    var quote:Quote?
+    var quote: Quote?
     
     override func viewDidLoad() {
         super.viewDidLoad()
