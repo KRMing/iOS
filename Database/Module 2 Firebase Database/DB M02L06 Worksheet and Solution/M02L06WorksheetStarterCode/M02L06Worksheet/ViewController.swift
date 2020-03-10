@@ -48,6 +48,11 @@ class ViewController: UIViewController {
         
         // TODO: Pass selected quote to detail view controller
         destinationVC.quote = quotes[indexPath.row]
+        
+//        if let indexPath = tableView.indexPathForSelectedRow {
+//
+//            destinationVC.quote = quotes[indexPath.row]
+//        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
