@@ -12,5 +12,6 @@ struct Quote {
     
     var title:String?
     var authorName:String?
-    var id: String?
+    var quoteId:String?
+    
 }
