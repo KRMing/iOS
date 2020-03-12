@@ -76,7 +76,7 @@ class ReadViewController: UIViewController {
     
     func listenForData() {
         
-        let handle = dbRef?.child("employees").observe(.value, with: { (snapshot) in
+        let handle = dbRef?.child("employees").queryOrdered(byChild: "age").queryStarting(atValue: 10).queryEnding(atValue: 30).observe(.value, with: { (snapshot) in
             
             // get all of the children objects of the snapshot
             let snapshots = snapshot.children.allObjects as! [DataSnapshot]

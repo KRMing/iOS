@@ -14,5 +14,4 @@ struct Employee {
     var age: Int?
     var likes: String?
     var role: String?
-    
 }
