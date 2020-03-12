@@ -64,7 +64,12 @@ class ViewController: UIViewController {
     func getData() {
         
         // TODO: The database call to get the quotes
-        dbRef?.child("quotes").observeSingleEvent(of: .value, with: { snapshot in
+//        dbRef?.child("quotes").queryOrdered(byChild: "likes").queryStarting(atValue: 15).observeSingleEvent(of: .value, with: { snapshot in
+            
+            
+//        dbRef?.child("quotes").queryOrdered(byChild: "author/name").queryEqual(toValue: "Benjamin Franklin").observeSingleEvent(of: .value, with: { snapshot in
+        
+        dbRef?.child("quotes").queryOrdered(byChild: "type").queryEqual(toValue: "Inspirational").observeSingleEvent(of: .value, with: { snapshot in
             
             let snapshots = snapshot.children.allObjects as! [DataSnapshot]
             
