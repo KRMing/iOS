@@ -75,18 +75,66 @@
 			children = (
 				3A5CA505241BA666002482C8 /* AppDelegate.swift */,
 				3A5CA507241BA666002482C8 /* SceneDelegate.swift */,
-				3A5CA50B241BA666002482C8 /* Main.storyboard */,
+				3A809CE9241BAF7D00A5CA7B /* Storyboards */,
+				3A809CED241BAFB000A5CA7B /* Services */,
+				3A809CEC241BAFA900A5CA7B /* Helpers */,
+				3A809CEB241BAFA400A5CA7B /* Views */,
+				3A809CEA241BAF9D00A5CA7B /* Models */,
+				3A809CE8241BAF5E00A5CA7B /* ViewControllers */,
+				3A5CA50E241BA669002482C8 /* Assets.xcassets */,
+				3A5CA513241BA669002482C8 /* Info.plist */,
+				3A5CA519241BA6EA002482C8 /* GoogleService-Info.plist */,
+			);
+			path = Mingstagram;
+			sourceTree = "<group>";
+		};
+		3A809CE8241BAF5E00A5CA7B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
 				3A809CDE241BA99700A5CA7B /* LoginViewController.swift */,
 				3A809CE0241BA9AC00A5CA7B /* CreateProfileViewController.swift */,
 				3A809CE2241BA9B600A5CA7B /* FeedViewController.swift */,
 				3A809CE4241BA9BD00A5CA7B /* CameraViewController.swift */,
 				3A809CE6241BA9C400A5CA7B /* SettingsViewController.swift */,
-				3A5CA50E241BA669002482C8 /* Assets.xcassets */,
-				3A5CA510241BA669002482C8 /* LaunchScreen.storyboard */,
-				3A5CA513241BA669002482C8 /* Info.plist */,
-				3A5CA519241BA6EA002482C8 /* GoogleService-Info.plist */,
 			);
-			path = Mingstagram;
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3A809CE9241BAF7D00A5CA7B /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				3A5CA510241BA669002482C8 /* LaunchScreen.storyboard */,
+				3A5CA50B241BA666002482C8 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		3A809CEA241BAF9D00A5CA7B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3A809CEB241BAFA400A5CA7B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3A809CEC241BAFA900A5CA7B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		3A809CED241BAFB000A5CA7B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		7B663E7C5F8526D807B8C578 /* Frameworks */ = {
