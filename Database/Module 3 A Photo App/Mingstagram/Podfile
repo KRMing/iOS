@@ -12,5 +12,6 @@ target 'Mingstagram' do
   pod 'Firebase/Storage'
   pod 'FirebaseUI/Auth'
   pod 'Firebase/Auth'
+  pod 'FirebaseUI/Email'
 
 end
