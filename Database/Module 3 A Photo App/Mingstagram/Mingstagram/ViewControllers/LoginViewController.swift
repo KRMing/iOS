@@ -55,16 +55,10 @@ extension LoginViewController: FUIAuthDelegate {
             return
         }
         
-        // get the user
-        let user = authDataResult?.user
-        
-        // check if user is nil
-        guard user != nil else {
+        // get the user && check if user is nil
+        if let user = authDataResult?.user {
             
-            print("failed to initialize user")
-            return
+//            user.uid do something here
         }
-        
-        user!.uid 
     }
 }
