@@ -38,7 +38,7 @@ class LoginViewController: UIViewController {
         // create a firebase auth pre build UI View Controller
         let authViewController = authUI!.authViewController()
         
-        // present it
+        // present it 
         present(authViewController, animated: true, completion: nil)
     }
 }
